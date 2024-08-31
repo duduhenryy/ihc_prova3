@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page - Aplicativo de Musculação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>MuscleIF</h1>
+            <nav>
+                <ul>
+                    <li><a href="/C:\Users\Edu\Desktop\trabalho3_IHC\sobre.html">Sobre</a></li>
+                    <li><a href="#cadastro">Cadastre-se</a></li>
+                    <li><a href="#areaLogin" onclick="openLoginModal()">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Maximize seus resultados com nosso aplicativo de musculação!</h2>
+            <p>Desenvolvido especialmente para os alunos da nossa faculdade.</p>
+            <button onclick="scrollToSection('cadastro')">Cadastre-se</button>
+            <button onclick="openLoginModal()">Login</button>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <h3 ><a href="/C:\Users\Edu\Desktop\trabalho3_IHC\sobre.html">Sobre o Aplicativo</a></h3>
+            <p>Com nosso aplicativo, você pode acompanhar seu progresso, criar planos de treino personalizados e muito mais!</p>
+        </div>
+    </section>
+
+    <section id="imagens">
+        <div class="container">
+            <h3>Veja o aplicativo em ação!</h3>
+            <div class="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item" data-caption="Interface do Aplicativo - Usuário Ativo">
+                        <img src="imagem1.png" alt="Interface do Aplicativo">
+                    </div>
+                    <div class="carousel-item" data-caption="Interface do Aplicativo - Tela de Cadastro">
+                        <img src="imagem2.png" alt="Interface do Aplicativo">
+                    </div>
+                    <div class="carousel-item" data-caption="Interface do Aplicativo - Tela de Login">
+                        <img src="imagem3.png" alt="Interface do Aplicativo">
+                    </div>
+                    <div class="carousel-item" data-caption="Registro de Progresso - Treinos e Categorias">
+                        <img src="imagem4.png" alt="Interface do Aplicativo">
+                    </div>
+                    <div class="carousel-item" data-caption="Registro de Progresso - Fichas de Treinos">
+                        <img src="imagem5.png" alt="Interface do Aplicativo">
+                    </div>
+                    <div class="carousel-item" data-caption="Registro de Progresso - Acompanhe Seu Desempenho">
+                        <img src="imagem6.png" alt="Interface do Aplicativo">
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
+                </div>
+            </div>
+        
+            <div class="caption" id="carousel-caption">Interface do Aplicativo - Tela de Login</div>
+        
+            <script>
+                let currentSlide = 0;
+        
+                function updateCaption() {
+                    const items = document.querySelectorAll('.carousel-item');
+                    const caption = items[currentSlide].getAttribute('data-caption');
+                    document.getElementById('carousel-caption').textContent = caption;
+                }
+        
+                function moveCarousel(direction) {
+                    const carouselInner = document.querySelector('.carousel-inner');
+                    const items = document.querySelectorAll('.carousel-item');
+                    currentSlide = (currentSlide + direction + items.length) % items.length;
+                    carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    updateCaption();
+                }
+        
+                // Inicializa a legenda na primeira carga
+                updateCaption();
+            </script>
+        </div>
+    </section>
+
+    <section id="cadastro">
+        <div class="container">
+            <h3>Cadastre-se agora e turbine seus treinos!</h3>
+            <form id="signupForm">
+                <input type="text" id="name" placeholder="Nome Completo" required>
+                <input type="email" id="email" placeholder="E-mail" required>
+                <input type="password" id="password" placeholder="Senha" required>
+                <input type="password" id="confirmPassword" placeholder="Confirme sua Senha" required>
+                <button type="submit">Cadastre-se</button>
+            </form>
+        </div>
+    </section>
+    <section id="areaLogin">
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <h3>Login</h3>
+            <form>
+                <input type="email" placeholder="E-mail" required>
+                <input type="password" placeholder="Senha" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 MuscleIF. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
